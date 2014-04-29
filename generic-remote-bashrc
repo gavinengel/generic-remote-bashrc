@@ -1,4 +1,4 @@
-### 2012-12-27 ###
+### 2014-04-29 ###
 #fancy colors
 function setprompt
 {
@@ -21,11 +21,6 @@ function setprompt
 setprompt
 
 
-#repository stuff
-alias svnc="svn ci -m 'Quick Commit.'"
-alias svns="svn status"
-export SVN_EDITOR=vim;
-
 # general stuff
 alias ..='cd ..;ls;'
 alias ...='cd ../..;ls;'
@@ -37,60 +32,16 @@ alias diffy="diff -y -W 250 "
 
 alias vi=vim
 
-gr () {  echo "";grep -Isrn "$*" * | grep -v svn | grep -v '.sql' | grep -v 'log/system.log' | grep -v 'logs/access_log' | grep -v 'logs/error_log' | grep -v '.log.php'; }
 GREP_OPTIONS="--exclude=\*.svn\*";export GREP_OPTIONS;
-alias ag="ack-grep"
 
 alias h='history'
-alias gavzip="tar -cvzpf archive.tgz $1"
-alias gavunzip="tar -xvzpf $1"
-
-alias weblog="tail ~/statistics/logs/error_log -f;"
 
 # The 'ls' family
 alias l='ls'
-alias la='ls -Al'               # show hidden files
+alias la='ls -Ahl'               # show hidden files
 alias ls='ls -hlF'       # add colors for filetype recognition
+alias ldir="ls -Rl | grep '^d'"  # show only directories (recursively)
 
-alias drush='~/drush/drush';
-
-drupalpermissions () {
-  chmod -R 755 *
-  chmod 755 sites/default/;
-  chmod -R 777 sites/default/files;
-  chmod 755 sites/default/settings.php;
-  mkdir sites/default/temp;chmod -R 777 sites/default/temp;
-  mkdir sites/default/files;chmod -R 777 sites/default/files;
-  mkdir sites/default/files/images;chmod -R 777 sites/default/files/images;
-  chmod -R 777 tmp;
-  chmod 700 bk; # not always present
-  chmod 755 cc-keys; # only present in some e-commerce sites
-
-  # fck uploads
-  echo 'creating folders for fck editor...';
-  chmod 777 files
-  chmod -R 777 files/uploads 
-  mkdir files/uploads/1;
-  mkdir files/uploads/1/file;
-  mkdir files/uploads/1/flash;
-  mkdir files/uploads/1/image;
-  mkdir files/uploads/1/media;
-
-
-}
-
-
-
-wordpresspermissions () {
-  chmod -R 775 wp-content/plugins/*;
-  mkdir wp-content/uploads;chmod -R 777 wp-content/uploads;
-  chmod 776 .htaccess; # so this can save to htaccess: wp-admin/options-permalink.php
-  touch sitemap.xml;touch sitemap.xml.gz;
-  chmod 777 sitemap.xml*;
-}
-
-# sample crontab for drupal cron: (every 2 hours):
-#   0 */2 * * * curl --silent --compressed -A "Mozilla/5.0" http://www.change me.com/cron.php; # per: http://drupal.org/node/237506
 
 # final tasks
-source ~/.bash_profile;
+#source ~/.bash_profile;
