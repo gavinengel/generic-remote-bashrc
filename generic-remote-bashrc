@@ -21,6 +21,10 @@ function setprompt
 setprompt
 
 
+
+
+
+
 # general stuff
 alias ..='cd ..;ls;'
 alias ...='cd ../..;ls;'
